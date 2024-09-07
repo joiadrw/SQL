@@ -1,0 +1,82 @@
+#Created table and inserted data for Spotify.
+
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+song_key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+song_mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness decimal(8,7) NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL )
+
+
+#I performed analytics using the Spotify data.
+
+
+#1. Who is the most popular artist on Spotify?
+SELECT artist_name, popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity DESC
+LIMIT 1;
+
+#2. Which song has the highest valence?
+SELECT artist_name, track_name, valence
+FROM BIT_DB.Spotifydata
+ORDER BY valence DESC
+LIMIT 1;
+
+#3. Which song has the lowest valence?
+SELECT artist_name, track_name, valence
+FROM BIT_DB.Spotifydata
+ORDER BY valence ASC
+LIMIT 1;
+
+#4. Which artists have a popularity level over 90?
+SELECT artist_name, popularity
+FROM BIT_DB.Spotifydata
+WHERE popularity>90
+ORDER BY popularity DESC;
+
+#5. What's the energy level in Ariana Grande's song "Positions"?
+SELECT artist_name, track_name, energy
+FROM BIT_DB.Spotifydata
+WHERE artist_name="Ariana Grande"
+AND track_name="positions";
+
+#6. What artist released the shortest song?
+SELECT artist_name, track_name, MIN(duration_ms)
+FROM BIT_DB.Spotifydata
+GROUP BY duration_ms
+LIMIT 1;
+
+#7. What's the average danceability for The Weeknd's songs?
+SELECT AVG(danceability), artist_name, track_name
+FROM BIT_DB.Spotifydata
+WHERE artist_name="The Weeknd";
+
+#8. Which song has the highest tempo?
+SELECT artist_name, track_name, MAX(tempo)
+FROM BIT_DB.Spotifydata
+ORDER BY tempo;
+
+#9. What are the top ten songs based on the energy?
+SELECT artist_name, track_name, energy
+FROM BIT_DB.Spotifydata
+ORDER BY energy DESC
+LIMIT 10;
+
+#10. Which songs have the highest popularity and energy?
+SELECT track_name, MAX(popularity, energy)
+FROM BIT_DB.Spotifydata
+LIMIT 3;
