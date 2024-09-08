@@ -1,0 +1,21 @@
+#I've created some questions and provided answers for my final SQL project.
+
+#1. What's the average price on the track "Crazy"?
+SELECT AVG(unitprice), trackid, name
+FROM chinook.tracks
+GROUP BY name
+HAVING TrackId='34';
+
+#2. Which customers purchased the "Jagged Little Pill" album including the track "You Oughta Know"?
+SELECT DISTINCT cust.customerid
+FROM chinook.customers cust
+INNER JOIN chinook.invoices inv ON cust.customerid = inv.customerid
+INNER JOIN chinook.invoice_items items ON inv.invoiceid = items.invoiceid
+INNER JOIN chinook.tracks song ON items.trackid = song.trackid
+WHERE song.trackid = '39';
+
+#3. Create an "American" flag column assigning a customer with a 3 when they reside in the USA.
+SELECT FirstName, LastName, Country,
+CASE WHEN Country='USA' THEN "3"
+ELSE 0 END "American"
+FROM chinook.customers;
