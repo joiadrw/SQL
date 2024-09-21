@@ -79,7 +79,7 @@ ELSE "0" END AS "flag"
 FROM fortune_companies
 GROUP BY "flag"
 
-#What's the total amount of employess working in the manufacturing industry?
+#What's the total amount of employees working in the manufacturing industry?
 SELECT SUM(employees)
 FROM fortune_companies
 WHERE industry="Manufacturing";
