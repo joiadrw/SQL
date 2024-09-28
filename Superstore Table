@@ -80,3 +80,13 @@ ORDER BY price DESC;
 SELECT MIN(price)
 FROM superstore
 WHERE category="Electronics";
+
+
+
+First, I utilized SQL to calculate different product metrics like category, stock quantity and average product rating. The metrics are useful in identifying the price range of various products, the maximum and minimum price in specified categories and product customer ratings.
+
+Second, I used SQL to create a clustering algorithm placing specific products in groups based on their average rating. I included other factors such as price statistics on products and the quantity of products in stock. By applying this technique, products were placed into specific segments, like product stock quantity in the appliances category, average product rating in the furnishings category and maximum prices of products in the kitchen supplies category.
+
+Next, I created SQL queries to introduce visualizations, like bar charts and pie charts, to show the distribution of the product segments.
+
+Lastly, I presented the analysis in a report with Tableau summarizing the distinct characteristics of each product segment. By leveraging SQL to perform product segmentation, pertinent insights about product performance were revealed, helping to make necessary product enhancements.
